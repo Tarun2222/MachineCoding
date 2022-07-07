@@ -1,0 +1,33 @@
+<h1>Simple Angular Test</h1>
+<form [formGroup]="profileForm" (ngSubmit)="submit()">
+    <div>
+        <div class="field">
+            <label for="">Title</label>
+            <select formControlName="title">
+                <option value="">--Select an Option--</option>
+                <option *ngFor="let title of titles" [value]="title.name" [selected]="title.isDefault ? 'selected':''">
+                    {{title.name}}</option>
+                <!-- ToDo:add title to dropdown -->
+            </select>
+        </div>
+        <div class="field">
+            <label for="">First name</label>
+            <input type="text" placeholder="First name" formControlName="firstName">
+        </div>
+        <div class="field">
+            <label for="">Last name</label>
+            <input type="text" placeholder="Last name" formControlName="lastName">
+            
+        </div>
+        <span></span>
+
+        <div>
+            <input type="checkbox" name="" id="" formControlName="termsAccepted">
+            <label for="">I accept the terms and conditions</label>
+        </div>
+        <div class="button-panel">
+
+            <button [disabled]="profileForm.value.termsAccepted ? false : true">Submit</button>
+        </div>
+    </div>
+</form>
